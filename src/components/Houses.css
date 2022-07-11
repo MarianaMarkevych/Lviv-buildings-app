@@ -1,6 +1,7 @@
 .house {
   padding: 4rem;
   background: #fff;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -25,12 +26,17 @@ h1 {
 
 .house__items {
   margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .house__item {
   display: block;
-  flex: 1;
-  margin: 0 1rem;
+  flex-flow: column;
+  align-items: center;
+  width: 373px;
+  margin: 20 auto;
+  padding: 17px;
   border-radius: 10px;
   /* box-shadow: 6px 6px 25px rgba(54, 97, 176, 0.17);
   -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));

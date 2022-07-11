@@ -4,6 +4,7 @@ import "./Houses";
 const MySelect = ({ selected, setSelected }) => {
   const [isActive, setIsActive] = useState(false);
   const options = ["В проєкті", "Будується", "Зданий в експлуатацію"];
+
   return (
     <div className="dropdown">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
@@ -14,10 +15,11 @@ const MySelect = ({ selected, setSelected }) => {
       {isActive && (
         <div className="dropdown-content">
           <h1 className="dropdown-text">Cтан будівництва </h1>
-          {options.map((option) => (
+          {options.map((option, index) => (
             <div
+              key={index}
               onClick={(e) => {
-                setSelected(option);
+                setSelected(e.target.textContent);
                 setIsActive(false);
               }}
               className="dropdown-item"
