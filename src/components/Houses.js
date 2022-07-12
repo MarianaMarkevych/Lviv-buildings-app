@@ -45,8 +45,6 @@ function Houses({ title }) {
 
   return (
     <div className="house" id="realEstate">
-      <h1> {title}</h1>
-
       <div className="house__container">
         <div className="house__wrapper">
           <ul className="house__items">

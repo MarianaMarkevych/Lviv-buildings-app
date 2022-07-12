@@ -1,30 +1,30 @@
 import React, { useState } from "react";
-import "./Houses";
+import "./MySelect.css";
 
 const MySelect = ({ selected, setSelected }) => {
   const [isActive, setIsActive] = useState(false);
-  const options = ["В проєкті", "Будується", "Зданий в експлуатацію"];
+  const labels = ["В проєкті", "Будується", "Зданий в експлуатацію"];
 
   return (
     <div className="dropdown">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
-        Фільтр
+        {selected}
         <span className="fas fa-caret-down"></span>
       </div>
 
       {isActive && (
         <div className="dropdown-content">
-          <h1 className="dropdown-text">Cтан будівництва </h1>
-          {options.map((option, index) => (
+          <h1 className="dropdown-text">Cтан будівництва: </h1>
+          {labels.map((label, index) => (
             <div
               key={index}
               onClick={(e) => {
-                setSelected(e.target.textContent);
+                setSelected(label);
                 setIsActive(false);
               }}
               className="dropdown-item"
             >
-              {option}
+              {label}
             </div>
           ))}
         </div>

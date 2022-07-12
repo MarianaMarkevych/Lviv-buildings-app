@@ -7,7 +7,7 @@ function Footer() {
       <section className="social-media">
         <div className="social-media-wrap">
           <p className="footer--text">Фоловіть та пишіть сюди:</p>
-          <div class="social-icons">
+          <div className="social-icons">
             <a
               href="https://github.com/MarianaMarkevych"
               className="social-icon-link github"

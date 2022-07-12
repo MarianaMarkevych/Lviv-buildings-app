@@ -11,14 +11,39 @@ import "../Houses.css";
 
 function Home() {
   const [posts, setPosts] = useState([]);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Фільтр");
+  // const [label, setLabel] = useState("Фільтр");
 
-  const filterPosts = (option) => {
-    setSelected(option);
-    const filtered = posts.filter((post) => post.label === option);
+  const postFiltered = (label) => {
+    setSelected(label);
+    const filtered = posts.filter((post) => post.label === label);
     setPosts(filtered);
     console.log(filtered);
   };
+
+  // useEffect(() => {
+  //   console.log(label);
+  //   // setSelected(
+  //   //   label === "Фільтр" ? posts : posts.filter((post) => post.label === label)
+  //   // );
+  // }, [label]);
+
+  //   if (option === "В проєкті") {
+  //     const filtered = posts.filter((post) => post.label === "В проєкті");
+  //     setPosts(filtered);
+  //     console.log(filtered);
+  //   } else if (option === "Будується") {
+  //     const filtered = posts.filter((post) => post.label === "Будується");
+  //     setPosts(filtered);
+  //     console.log(filtered);
+  //   } else if (option === "Зданий в експлуатацію") {
+  //     const filtered = posts.filter(
+  //       (post) => post.label === "Зданий в експлуатацію"
+  //     );
+  //     setPosts(filtered);
+  //     console.log(filtered);
+  //   }
+  // };
 
   // const handleBtns = (e) => {
   //   let word = e.target.value;
@@ -39,18 +64,11 @@ function Home() {
   return (
     <>
       <PreSection />
-      {/* <PostFilter
-        value={selected}
-        onChange={filterPosts}
-        defaultValue="Фільтр"
-        options={[
-          { value: "В проєкті" },
-          { value: "Будується" },
-          { value: "Зданий в експлуатацію" },
-        ]}
-      /> */}
-      <MySelect selected={selected} setSelected={filterPosts} />
-      <Houses title="Новобудови Львова" />
+      <h1 className="house--text">Новобудови Львова</h1>
+
+      <MySelect selected={selected} setSelected={postFiltered} />
+
+      <Houses posts={posts} />
       <Footer />
     </>
   );
