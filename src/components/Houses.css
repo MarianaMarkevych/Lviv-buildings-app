@@ -1,16 +1,22 @@
 .house {
-  padding: 4rem;
+  padding: 4em;
   background: #fff;
   box-sizing: border-box;
 }
 
 h1 {
   font-family: "Raleway", sans-serif;
-  margin-left: 11rem;
+  margin-left: 7rem;
   text-align: left;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
-
+.house--select {
+  margin-left: 5rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 .house__container {
   display: block;
   flex-flow: column;
@@ -22,7 +28,7 @@ h1 {
 
 .house__wrapper {
   /* position: relative; */
-  margin: 50px 0 45px;
+  margin: 50px 0 50px;
 }
 
 .house__items {

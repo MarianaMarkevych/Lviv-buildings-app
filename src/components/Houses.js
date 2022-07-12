@@ -2,8 +2,45 @@ import React from "react";
 import HouseItem from "./HouseItem";
 import "./Houses.css";
 import { useState } from "react";
+import Select from "./Select";
 
 function Houses({ title }) {
+  const labels = ["Всі", "В проєкті", "Будується", "Зданий в експлуатацію"];
+  const text = ["Всі", "Parus", "Avalon"];
+  const [selected, setSelected] = useState("");
+
+  const labelFiltered = (label) => {
+    setSelected(label);
+    const filtered =
+      label === "Всі" ? posts : posts.filter((post) => post.label === label);
+    setPosts(filtered);
+  };
+
+  const developerFiltered = (text) => {
+    setSelected(text);
+    const devfiltered =
+      text === "Всі" ? posts : posts.filter((post) => post.text === text);
+    setPosts(devfiltered);
+  };
+  // const postFiltered = (label) => {
+  //   setSelected(label);
+  //   if (label === "В проєкті") {
+  //     const filtered = posts.filter((post) => post.label === "В проєкті");
+  //     setPosts(filtered);
+  //     console.log(filtered);
+  //   } else if (label === "Будується") {
+  //     const filtered = posts.filter((post) => post.label === "Будується");
+  //     setPosts(filtered);
+  //     console.log(filtered);
+  //   } else if (label === "Зданий в експлуатацію") {
+  //     const filtered = posts.filter(
+  //       (post) => post.label === "Зданий в експлуатацію"
+  //     );
+  //     setPosts(filtered);
+  //     console.log(filtered);
+  //   }
+  // };
+
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -33,7 +70,7 @@ function Houses({ title }) {
       id: 5,
       src: "images/img-5.jpg",
       text: "Avalon Premium",
-      label: "В проєкті",
+      label: "Будується",
     },
     {
       id: 6,
@@ -45,6 +82,20 @@ function Houses({ title }) {
 
   return (
     <div className="house" id="realEstate">
+      <h1 className="house--text">{title}</h1>
+      <span className="house--select">
+        <Select
+          options={labels}
+          title="Cтан будівництва:"
+          selected="Фільтр"
+          setSelected={labelFiltered}
+        />
+        <Select
+          options={text}
+          selected="Забудовники"
+          setSelected={developerFiltered}
+        />
+      </span>
       <div className="house__container">
         <div className="house__wrapper">
           <ul className="house__items">

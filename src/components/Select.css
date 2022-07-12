@@ -1,13 +1,14 @@
 .container {
   width: 100%;
+
   /* height: 100vh; */
 }
 .dropdown {
-  width: 342px;
+  width: 340px;
   user-select: none;
-  margin-left: 11rem;
+  margin-left: 2rem;
   position: relative;
-  padding-top: 40px;
+  padding-top: 0px;
   z-index: 1;
 }
 .dropdown .dropdown-btn {
@@ -21,6 +22,10 @@
   cursor: pointer;
   justify-content: space-between;
   border-radius: 10px;
+}
+
+.dropdown .dropdown-btn:hover {
+  background-image: linear-gradient(35deg, #ffffff, #bdd0f5);
 }
 .dropdown .dropdown-content {
   position: absolute;
@@ -45,8 +50,8 @@
   transition: all 0.2s;
   font-size: 13px;
   color: #000;
-  background: #f4f4f4;
-  border-radius: 10px;
+  background-image: linear-gradient(35deg, #ffffff, #f1f1f1);
+  border-radius: 12px;
 }
 
 .dropdown .dropdown-content .dropdown-item:hover {
