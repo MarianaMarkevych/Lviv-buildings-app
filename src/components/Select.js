@@ -6,12 +6,7 @@ const MySelect = ({ options, title, selected, setSelected }) => {
 
   return (
     <div className="dropdown">
-      <div
-        disabled
-        value=""
-        className="dropdown-btn"
-        onClick={(e) => setIsActive(!isActive)}
-      >
+      <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
         {selected}
         <span className="fas fa-caret-down"></span>
       </div>

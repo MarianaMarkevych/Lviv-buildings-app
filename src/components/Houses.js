@@ -5,15 +5,33 @@ import { useState } from "react";
 import Select from "./Select";
 
 function Houses({ title }) {
-  const labels = ["Всі", "В проєкті", "Будується", "Зданий в експлуатацію"];
-  const text = ["Всі", "Parus", "Avalon"];
-  const [selected, setSelected] = useState("");
+  const labels = ["В проєкті", "Будується", "Зданий в експлуатацію"];
+  const text = ["Parus", "Avalon"];
+  const [selected, setSelected] = useState("Фільтр");
 
+  // function getLabelFiltered(label) {
+  //   if (selected) {
+  //     return posts.filter((post) => post.label === label);
+  //   }
+  //   return posts;
+
+  // const labelFiltered = useMemo(
+  //   (label) => {
+  //     if (selected) {
+  //       return posts.filter((post) => post.label === label);
+  //     }
+  //     return posts;
+  //   },
+  //   [selected]
+
+  //
   const labelFiltered = (label) => {
     setSelected(label);
-    const filtered =
-      label === "Всі" ? posts : posts.filter((post) => post.label === label);
-    setPosts(filtered);
+    if (selected) {
+      const filtered = [...posts].filter((post) => post.label === label);
+      setPosts(filtered);
+    }
+    return posts;
   };
 
   const developerFiltered = (text) => {
@@ -87,8 +105,9 @@ function Houses({ title }) {
         <Select
           options={labels}
           title="Cтан будівництва:"
-          selected="Фільтр"
+          // defaultValue="Фільтр"
           setSelected={labelFiltered}
+          selected={selected}
         />
         <Select
           options={text}
