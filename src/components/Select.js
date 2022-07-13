@@ -19,7 +19,7 @@ const MySelect = ({ options, title, selected, setSelected }) => {
               key={index}
               onClick={(e) => {
                 setSelected(option);
-                // setIsOpen(true);
+                setIsOpen(true);
               }}
               className="dropdown-item"
             >

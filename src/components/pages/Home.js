@@ -4,49 +4,9 @@ import PreSection from "../PreSection";
 import Houses from "../Houses";
 import Footer from "../Footer";
 import "../Houses.css";
-import { useState } from "react";
-import Select from "../Select";
 
 function Home() {
-  const labels = ["В проєкті", "Будується", "Зданий в експлуатацію"];
-  const text = ["Parus", "Avalon"];
-  const [selected, setSelected] = useState("Фільтр");
-  const [filteredResults, setFilteredResults] = useState([]);
-
-  // // варіант 1
-  React.useEffect(() => {
-    const filterResults = posts.filter((post) => post.label === selected);
-    setFilteredResults(filterResults);
-    console.log(filterResults);
-  }, [selected]);
-
-  const searchItems = (label) => {
-    setSelected(label);
-    console.log(label);
-  };
-  // // варіант 2
-  // const searchItems = (label) => {
-  //   setSelected(label);
-  //   console.log(label);
-  // };
-
-  //   if (selected !== "") {
-  //     const filteredPost = [...posts].filter((post) => post.label === label);
-  //     setFilteredResults(filteredPost);
-  //     console.log(filteredPost);
-  //   } else {
-  //     setFilteredResults(posts);
-  //     console.log(posts);
-  //   }
-  // };
-
-  // const developerFiltered = (text) => {
-  //   setSelected(text);
-  //   const devfiltered =
-  //     text === "Всі" ? posts : posts.filter((post) => post.text === text);
-  //   setPosts(devfiltered);
-  // };
-  const [posts, setPosts] = useState([
+  const posts = [
     {
       id: 1,
       src: "images/img-1.jpg",
@@ -89,26 +49,12 @@ function Home() {
       label: "Будується",
       site: "parus.smart.lviv.ua",
     },
-  ]);
+  ];
+
   return (
     <>
       <PreSection />
-      <h1 className="house--text">Новобудови Львова</h1>
-      <span className="house--select">
-        <Select
-          options={labels}
-          title="Cтан будівництва:"
-          // defaultValue="Фільтр"
-          setSelected={searchItems}
-          selected="Фільтр"
-        />
-        <Select
-          options={text}
-          selected="Забудовники"
-          setSelected={setSelected}
-        />
-      </span>
-      <Houses posts={posts} />
+      <Houses posts={posts} title="Новобудови Львова" />
       <Footer />
     </>
   );
