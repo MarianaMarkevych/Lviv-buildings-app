@@ -15,6 +15,7 @@ function Houses({ posts }) {
                 label={post.label}
                 text={post.text}
                 key={post.id}
+                site={post.site}
               />
             ))}
           </ul>
