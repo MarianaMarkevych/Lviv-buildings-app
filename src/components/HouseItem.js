@@ -24,8 +24,10 @@ function HouseItem(props) {
         </div>
         {isHovering && (
           <div className="house__item__info">
-            <h2 className="house__item__text">{props.text}</h2>
-            <button className="house__item__text">{props.site}</button>
+            <span className="house__item__span">
+              <h2 className="house__item__text">{props.text}</h2>
+              <button className="house__item__btn">{props.site}</button>
+            </span>
           </div>
         )}
       </li>

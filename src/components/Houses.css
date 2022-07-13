@@ -16,6 +16,13 @@ h1 {
   align-items: center;
   justify-content: flex-start;
 }
+
+.house__item__span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .house__container {
   display: block;
   flex-flow: column;
