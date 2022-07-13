@@ -78,6 +78,7 @@ h1 {
   height: 100;
   border-radius: 10px;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* .house-cover {
@@ -98,6 +99,7 @@ h1 {
   width: 100%;
   padding-top: 67%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .fade-img {
