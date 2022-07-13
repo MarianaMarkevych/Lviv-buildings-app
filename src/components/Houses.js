@@ -8,30 +8,28 @@ function Houses({ title }) {
   const labels = ["В проєкті", "Будується", "Зданий в експлуатацію"];
   const text = ["Parus", "Avalon"];
   const [selected, setSelected] = useState("Фільтр");
+  const [filteredResults, setFilteredResults] = useState([]);
 
-  // function getLabelFiltered(label) {
-  //   if (selected) {
-  //     return posts.filter((post) => post.label === label);
-  //   }
-  //   return posts;
+  // варіант 1
+  React.useEffect(() => {
+    const filterResults = posts.filter((post) => post.label === selected);
+    setFilteredResults(filterResults);
+    console.log(filterResults);
+  }, [selected]);
 
-  // const labelFiltered = useMemo(
-  //   (label) => {
-  //     if (selected) {
-  //       return posts.filter((post) => post.label === label);
-  //     }
-  //     return posts;
-  //   },
-  //   [selected]
-
-  //
-  const labelFiltered = (label) => {
+  // варіант 2
+  const searchItems = (label) => {
     setSelected(label);
-    if (selected) {
-      const filtered = [...posts].filter((post) => post.label === label);
-      setPosts(filtered);
-    }
-    return posts;
+    console.log(label);
+
+    // if (selected !== "") {
+    //   const filteredPost = [...posts].filter((post) => post.label === label);
+    //   setFilteredResults(filteredPost);
+    //   console.log(filteredPost);
+    // } else {
+    //   setFilteredResults(posts);
+    //   console.log(posts);
+    // }
   };
 
   const developerFiltered = (text) => {
@@ -106,7 +104,7 @@ function Houses({ title }) {
           options={labels}
           title="Cтан будівництва:"
           // defaultValue="Фільтр"
-          setSelected={labelFiltered}
+          setSelected={searchItems}
           selected={selected}
         />
         <Select
