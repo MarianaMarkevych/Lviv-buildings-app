@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 import PreSection from "../PreSection";
-import Houses from "../Houses";
+import HouseList from "../HouseList";
 import Footer from "../Footer";
 import "../Houses.css";
 
@@ -54,7 +54,7 @@ function Home() {
   return (
     <>
       <PreSection />
-      <Houses posts={posts} title="Новобудови Львова" />
+      <HouseList posts={posts} title="Новобудови Львова" />
       <Footer />
     </>
   );

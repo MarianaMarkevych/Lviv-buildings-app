@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import "./Select.css";
 
-const MySelect = ({ options, title, selected, setSelected }) => {
+const Select = ({ options, title, selected, setSelected }) => {
   const [isOpen, setIsOpen] = useState(false);
+  // const handleClick = () => {
+  //   setIsOpen(!isOpen);
 
   return (
     <div className="dropdown">
-      <div className="dropdown-btn" onClick={() => setIsOpen(!isOpen)}>
+      <div
+        className="dropdown-btn"
+        style={{
+          background: isOpen ? "#4674c8" : "",
+          color: isOpen ? "white" : "",
+        }}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         {selected}
         <span className="fas fa-caret-down"></span>
       </div>
@@ -32,4 +41,4 @@ const MySelect = ({ options, title, selected, setSelected }) => {
   );
 };
 
-export default MySelect;
+export default Select;

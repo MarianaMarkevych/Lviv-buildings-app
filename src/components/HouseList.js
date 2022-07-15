@@ -6,13 +6,14 @@ import { useEffect } from "react";
 import { useMemo } from "react";
 import { useState } from "react";
 
-function Houses({ title }) {
-  const labels = ["В проєкті", "Будується", "Зданий в експлуатацію"];
+function HouseList({ title }) {
+  const labels = ["В проєкті", "Будується", "Збудований", "Всі"];
   const text = ["Parus", "Avalon"];
-  const [selected, setSelected] = useState("Фільтр");
+  const [selected, setSelected] = useState("Cтан будівництва");
   const [posts, setPosts] = useState([]);
+
   function getFilteredPosts() {
-    if (selected === "Фільтр") {
+    if (selected === "Cтан будівництва" || selected === "Всі") {
       return posts;
     }
     return posts.filter((post) => post.label === selected);
@@ -21,6 +22,17 @@ function Houses({ title }) {
 
   function handleCategoryChange(label) {
     setSelected(label);
+  }
+  function getFilteredText() {
+    if (selected === "Забудовники") {
+      return posts;
+    }
+    return posts.filter((post) => post.label === selected);
+  }
+  const filteredText = useMemo(getFilteredText, [selected, posts]);
+
+  function handleCategoryChange1(text) {
+    setSelected(text);
   }
 
   useEffect(() => {
@@ -31,7 +43,7 @@ function Houses({ title }) {
       id: 1,
       src: "images/img-1.jpg",
       text: "Parus Smart",
-      label: "Зданий в експлуатацію",
+      label: "Збудований",
       site: "parus.smart.lviv.ua",
     },
     {
@@ -52,7 +64,7 @@ function Houses({ title }) {
       id: 4,
       src: "images/img-4.jpg",
       text: "Avalon Smart",
-      label: "Зданий в експлуатацію",
+      label: "Збудований",
       site: "parus.smart.lviv.ua",
     },
     {
@@ -77,14 +89,14 @@ function Houses({ title }) {
       <span className="house--select">
         <Select
           options={labels}
-          title="Cтан будівництва:"
+          // title="Cтан будівництва:"
           setSelected={handleCategoryChange}
-          selected={selected}
+          selected="Cтан будівництва"
         />
         <Select
           options={text}
           selected="Забудовники"
-          setSelected={setSelected}
+          setSelected={handleCategoryChange1}
         />
       </span>
       <div className="house__container">
@@ -107,4 +119,4 @@ function Houses({ title }) {
   );
 }
 
-export default Houses;
+export default HouseList;
