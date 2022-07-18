@@ -3,45 +3,61 @@ import HouseItem from "./HouseItem";
 import "./Houses.css";
 import Filter from "./Filter";
 import { useEffect } from "react";
-import { useMemo } from "react";
+
 import { useState } from "react";
 
 function HouseList({ title }) {
-  const labels = ["В проєкті", "Будується", "Збудований", "Всі"];
-  const text = ["Parus Smart", "Avalon", "Всі"];
-  const [selected, setSelected] = useState("Cтан будівництва");
-  const [posts, setPosts] = useState([]);
+  const text = ["Parus", "Avalon", "Всі"];
+  // const label = ["В проєкті", "Будується", "Збудований"];
+  const [filteredList, setFilteredList] = useState([]);
+  const [selectedDev, setSelectedDev] = useState("Забудовники");
+  const [selectedState, setSelectedState] = useState("Cтан будівництва");
 
-  function getFilteredPosts() {
-    if (
-      selected === "Cтан будівництва" ||
-      selected === "Всі" ||
-      selected === "Забудовники"
-    ) {
-      return posts;
+  const filterByDev = (filteredData) => {
+    if (selectedDev === "Забудовники" || selectedDev === "Всі") {
+      return filteredData;
     }
-    return posts.filter((post) => post.label === selected);
-  }
-  const filteredPosts = useMemo(getFilteredPosts, [selected, posts]);
+    const filteredDev = filteredData.filter((post) =>
+      post.text.includes(selectedDev)
+    );
+    return filteredDev;
+  };
 
-  function handleCategoryChange(label) {
-    setSelected(label);
-  }
-  function getFilteredText() {
-    if (selected === "Забудовники") {
-      return posts;
+  const filterByState = (filteredData) => {
+    if (!selectedState) {
+      return filteredData;
     }
-    return posts.filter((post) => post.label === selected);
-  }
 
-  function handleCategoryChange1(text) {
-    setSelected(text);
-  }
+    const filteredDev = filteredData.filter(
+      (post) => post.label === selectedState
+    );
+    return filteredDev;
+  };
+
+  const handleBrandChange = (text) => {
+    setSelectedDev(text);
+    console.log(text);
+  };
+
+  const handleYearChange = (event) => {
+    const inputState = String(event.target.id);
+
+    if (inputState === selectedState) {
+      setSelectedState("");
+      console.log("");
+    } else {
+      setSelectedState(inputState);
+    }
+    console.log(inputState);
+  };
 
   useEffect(() => {
-    setPosts(defaultPosts);
-  }, []);
-  const defaultPosts = [
+    var filteredData = filterByDev(posts);
+    filteredData = filterByState(filteredData);
+    setFilteredList(filteredData);
+  }, [selectedDev, selectedState]);
+
+  const posts = [
     {
       id: 1,
       src: "images/img-1.jpg",
@@ -91,21 +107,48 @@ function HouseList({ title }) {
       <h1 className="house--text">{title}</h1>
       <span className="house--select">
         <Filter
-          options={labels}
-          // title="Cтан будівництва:"
-          setSelected={handleCategoryChange}
-          selected="Cтан будівництва"
-        />
-        <Filter
           options={text}
-          selected="Забудовники"
-          setSelected={handleCategoryChange1}
+          setSelected={handleBrandChange}
+          selected={selectedDev}
         />
+        {/* <Filter
+          options={label}
+          setSelected={handleYearChange}
+          selected={selectedState}
+        /> */}
+
+        {/* <h5 className="house--text">Cтан будівництва:</h5> */}
+        <div id="year-options" onClick={handleYearChange}>
+          <div
+            className={
+              selectedState === "В проєкті" ? "active-option" : "filter-option"
+            }
+            id="В проєкті"
+          >
+            В проєкті
+          </div>
+          <div
+            className={
+              selectedState === "Будується" ? "active-option" : "filter-option"
+            }
+            id="Будується"
+          >
+            Будується
+          </div>
+          <div
+            className={
+              selectedState === "Збудований" ? "active-option" : "filter-option"
+            }
+            id="Збудований"
+          >
+            Збудований
+          </div>
+        </div>
       </span>
       <div className="house__container">
         <div className="house__wrapper">
           <ul className="house__items">
-            {filteredPosts.map((post) => (
+            {filteredList.map((post) => (
               <HouseItem
                 post={post}
                 src={post.src}
