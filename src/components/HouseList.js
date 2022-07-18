@@ -6,12 +6,11 @@ import { useEffect } from "react";
 
 import { useState } from "react";
 
-function HouseList({ title }) {
+function HouseList({ posts, title }) {
   const text = ["Parus", "Avalon", "Всі"];
-  // const label = ["В проєкті", "Будується", "Збудований"];
-  const [filteredList, setFilteredList] = useState([]);
+  const [filteredList, setFilteredList] = useState(posts);
   const [selectedDev, setSelectedDev] = useState("Забудовники");
-  const [selectedState, setSelectedState] = useState("Cтан будівництва");
+  const [selectedState, setSelectedState] = useState("");
 
   const filterByDev = (filteredData) => {
     if (selectedDev === "Забудовники" || selectedDev === "Всі") {
@@ -56,51 +55,6 @@ function HouseList({ title }) {
     filteredData = filterByState(filteredData);
     setFilteredList(filteredData);
   }, [selectedDev, selectedState]);
-
-  const posts = [
-    {
-      id: 1,
-      src: "images/img-1.jpg",
-      text: "Parus Smart",
-      label: "Збудований",
-      site: "parus.smart.lviv.ua",
-    },
-    {
-      id: 2,
-      src: "images/img-2.jpg",
-      text: "Parus Premium",
-      label: "В проєкті",
-      site: "paruspremium.com",
-    },
-    {
-      id: 3,
-      src: "images/img-3.jpg",
-      text: "Parus City",
-      label: "Будується",
-      site: "parus-city.lviv.ua",
-    },
-    {
-      id: 4,
-      src: "images/img-4.jpg",
-      text: "Avalon Smart",
-      label: "Збудований",
-      site: "parus.smart.lviv.ua",
-    },
-    {
-      id: 5,
-      src: "images/img-5.jpg",
-      text: "Avalon Premium",
-      label: "Будується",
-      site: "parus.smart.lviv.ua",
-    },
-    {
-      id: 6,
-      src: "images/img-6.jpg",
-      text: "Avalon Gardens",
-      label: "Будується",
-      site: "parus.smart.lviv.ua",
-    },
-  ];
 
   return (
     <div className="house" id="realEstate">

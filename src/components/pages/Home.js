@@ -11,7 +11,7 @@ function Home() {
       id: 1,
       src: "images/img-1.jpg",
       text: "Parus Smart",
-      label: "Зданий в експлуатацію",
+      label: "Збудований",
       site: "parus.smart.lviv.ua",
     },
     {
@@ -32,7 +32,7 @@ function Home() {
       id: 4,
       src: "images/img-4.jpg",
       text: "Avalon Smart",
-      label: "Зданий в експлуатацію",
+      label: "Збудований",
       site: "parus.smart.lviv.ua",
     },
     {

@@ -26,9 +26,12 @@ const Filter = ({ options, title, selected, setSelected }) => {
               key={index}
               onClick={(e) => {
                 setSelected(option);
-                setIsOpen(true);
+                setIsOpen(false);
               }}
-              className="dropdown-item"
+              // className="dropdown-item"
+              className={
+                setSelected(option) ? "dropdown-item" : "dropdown-item"
+              }
             >
               {option}
             </div>
