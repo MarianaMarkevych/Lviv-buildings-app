@@ -1,19 +1,23 @@
 import React from "react";
 import HouseItem from "./HouseItem";
 import "./Houses.css";
-import Select from "./Select";
+import Filter from "./Filter";
 import { useEffect } from "react";
 import { useMemo } from "react";
 import { useState } from "react";
 
 function HouseList({ title }) {
   const labels = ["В проєкті", "Будується", "Збудований", "Всі"];
-  const text = ["Parus", "Avalon"];
+  const text = ["Parus Smart", "Avalon", "Всі"];
   const [selected, setSelected] = useState("Cтан будівництва");
   const [posts, setPosts] = useState([]);
 
   function getFilteredPosts() {
-    if (selected === "Cтан будівництва" || selected === "Всі") {
+    if (
+      selected === "Cтан будівництва" ||
+      selected === "Всі" ||
+      selected === "Забудовники"
+    ) {
       return posts;
     }
     return posts.filter((post) => post.label === selected);
@@ -29,7 +33,6 @@ function HouseList({ title }) {
     }
     return posts.filter((post) => post.label === selected);
   }
-  const filteredText = useMemo(getFilteredText, [selected, posts]);
 
   function handleCategoryChange1(text) {
     setSelected(text);
@@ -87,13 +90,13 @@ function HouseList({ title }) {
     <div className="house" id="realEstate">
       <h1 className="house--text">{title}</h1>
       <span className="house--select">
-        <Select
+        <Filter
           options={labels}
           // title="Cтан будівництва:"
           setSelected={handleCategoryChange}
           selected="Cтан будівництва"
         />
-        <Select
+        <Filter
           options={text}
           selected="Забудовники"
           setSelected={handleCategoryChange1}

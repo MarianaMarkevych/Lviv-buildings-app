@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import "./Select.css";
+import "./Filter.css";
 
-const Select = ({ options, title, selected, setSelected }) => {
+const Filter = ({ options, title, selected, setSelected }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const handleClick = () => {
-  //   setIsOpen(!isOpen);
 
   return (
     <div className="dropdown">
@@ -41,4 +39,4 @@ const Select = ({ options, title, selected, setSelected }) => {
   );
 };
 
-export default Select;
+export default Filter;
