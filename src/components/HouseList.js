@@ -33,7 +33,7 @@ function HouseList({ posts, title }) {
     return filteredDev;
   };
 
-  const handleBrandChange = (text) => {
+  const handleDevChange = (text) => {
     setSelectedDev(text);
     console.log(text);
   };
@@ -62,7 +62,7 @@ function HouseList({ posts, title }) {
       <span className="house--select">
         <Filter
           options={text}
-          setSelected={handleBrandChange}
+          setSelected={handleDevChange}
           selected={selectedDev}
         />
         {/* <Filter

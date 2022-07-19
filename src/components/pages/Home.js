@@ -4,57 +4,43 @@ import PreSection from "../PreSection";
 import HouseList from "../HouseList";
 import Footer from "../Footer";
 import "../Houses.css";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import Pagination from "../Pagination";
 
 function Home() {
-  const posts = [
-    {
-      id: 1,
-      src: "images/img-1.jpg",
-      text: "Parus Smart",
-      label: "Збудований",
-      site: "parus.smart.lviv.ua",
-    },
-    {
-      id: 2,
-      src: "images/img-2.jpg",
-      text: "Parus Premium",
-      label: "В проєкті",
-      site: "paruspremium.com",
-    },
-    {
-      id: 3,
-      src: "images/img-3.jpg",
-      text: "Parus City",
-      label: "Будується",
-      site: "parus-city.lviv.ua",
-    },
-    {
-      id: 4,
-      src: "images/img-4.jpg",
-      text: "Avalon Smart",
-      label: "Збудований",
-      site: "parus.smart.lviv.ua",
-    },
-    {
-      id: 5,
-      src: "images/img-5.jpg",
-      text: "Avalon Premium",
-      label: "Будується",
-      site: "parus.smart.lviv.ua",
-    },
-    {
-      id: 6,
-      src: "images/img-6.jpg",
-      text: "Avalon Gardens",
-      label: "Будується",
-      site: "parus.smart.lviv.ua",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(6);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await axios.get(" http://localhost:3000/posts");
+      setPosts(res.data);
+      setLoading(false);
+    };
+
+    fetchPosts();
+  }, []);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
       <PreSection />
-      <HouseList posts={posts} title="Новобудови Львова" />
+      <HouseList posts={currentPosts} title="Новобудови Львова" />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+      />
       <Footer />
     </>
   );
