@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Pagination from "../Pagination";
+import Loader from "../Loader";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -19,6 +20,7 @@ function Home() {
     const fetchPosts = async () => {
       setLoading(true);
       const res = await axios.get(" http://localhost:3000/posts");
+      console.log(res.data);
       setPosts(res.data);
       setLoading(false);
     };
@@ -35,7 +37,12 @@ function Home() {
   return (
     <>
       <PreSection />
-      <HouseList posts={currentPosts} title="Новобудови Львова" />
+      {loading ? (
+        <Loader />
+      ) : (
+        <HouseList posts={currentPosts} title="Новобудови Львова" />
+      )}
+
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}

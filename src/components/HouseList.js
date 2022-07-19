@@ -65,11 +65,6 @@ function HouseList({ posts, title }) {
           setSelected={handleDevChange}
           selected={selectedDev}
         />
-        {/* <Filter
-          options={label}
-          setSelected={handleYearChange}
-          selected={selectedState}
-        /> */}
 
         {/* <h5 className="house--text">Cтан будівництва:</h5> */}
         <div id="year-options" onClick={handleYearChange}>

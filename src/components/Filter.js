@@ -28,10 +28,7 @@ const Filter = ({ options, title, selected, setSelected }) => {
                 setSelected(option);
                 setIsOpen(false);
               }}
-              // className="dropdown-item"
-              className={
-                setSelected(option) ? "dropdown-item" : "dropdown-item"
-              }
+              className="dropdown-item"
             >
               {option}
             </div>
