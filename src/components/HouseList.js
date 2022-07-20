@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function HouseList({ posts, title }) {
-  const text = ["Parus", "Avalon", "Всі"];
+  const text = ["Parus", "Avalon", "Lev", "Всі"];
   const [filteredList, setFilteredList] = useState(posts);
   const [selectedDev, setSelectedDev] = useState("Забудовники");
   const [selectedState, setSelectedState] = useState("");

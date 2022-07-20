@@ -26,13 +26,17 @@ function Home() {
     };
 
     fetchPosts();
-  }, []);
+  }, [currentPage]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+
+    console.log(pageNumber);
+  };
 
   return (
     <>
@@ -46,7 +50,8 @@ function Home() {
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
-        paginate={paginate}
+        paginate={handleClick}
+        currentPage={currentPage}
       />
       <Footer />
     </>

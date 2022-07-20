@@ -23,8 +23,8 @@
     },
     {
       "id": 4,
-      "src": "images/img-4.jpg",
-      "text": "Avalon Smart",
+      "src": "images/img-7.jpg",
+      "text": "Parus Life",
       "label": "Збудований",
       "site": "parus.smart.lviv.ua"
     },
@@ -44,20 +44,41 @@
     },
     {
       "id": 7,
-      "src": "images/img-6.jpg",
+      "src": "images/img-4.jpg",
       "text": "Avalon Gardens",
       "label": "Будується",
       "site": "parus.smart.lviv.ua"
     },
     {
       "id": 8,
-      "src": "images/img-6.jpg",
-      "text": "Avalon Gardens",
-      "label": "Будується",
+      "src": "images/img-8.jpg",
+      "text": "Parus Park",
+      "label": "Збудований",
       "site": "parus.smart.lviv.ua"
     },
     {
       "id": 9,
+      "src": "images/img-9.jpg",
+      "text": "Parus Development",
+      "label": "Збудований",
+      "site": "parus.smart.lviv.ua"
+    },
+    {
+      "id": 10,
+      "src": "images/img-10.jpg",
+      "text": "Lev City",
+      "label": "Збудований",
+      "site": "parus.smart.lviv.ua"
+    },
+    {
+      "id": 11,
+      "src": "images/img-11.jpg",
+      "text": "Lev Feel House",
+      "label": "Будується",
+      "site": "parus.smart.lviv.ua"
+    },
+    {
+      "id": 12,
       "src": "images/img-6.jpg",
       "text": "Avalon Gardens",
       "label": "В проєкті",

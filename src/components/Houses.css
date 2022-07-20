@@ -1,7 +1,6 @@
 .house {
   padding: 2em;
   background: #fff;
-  /* box-sizing: border-box; */
 }
 
 #year-options {
@@ -120,19 +119,6 @@ h1 {
   overflow: hidden;
 }
 
-/* .house-cover {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  color: #fff;
-  padding: 8px;
-} */
-
 .house__item__pic-wrap {
   position: relative;
   width: 100%;
@@ -144,16 +130,6 @@ h1 {
   animation-name: fade-img;
   animation-duration: 2s;
 }
-
-/* .house__bottom {
-  display: flex;
-  justify-content: space-between;
-  z-index: 1;
-}
-.house__title {
-  width: 100%;
-  overflow: hidden;
-} */
 
 .house__text {
   white-space: nowrap;
