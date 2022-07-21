@@ -14,7 +14,8 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(6);
+  // const [totalPosts, setTotalPosts] = useState(0);
+  const postsPerPage = 6;
 
   useEffect(() => {
     const fetchPosts = async () => {

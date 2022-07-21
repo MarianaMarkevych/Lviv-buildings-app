@@ -12,6 +12,8 @@ function HouseList({ posts, title }) {
   const [selectedDev, setSelectedDev] = useState("Забудовники");
   const [selectedState, setSelectedState] = useState("");
 
+  // const [totalPosts, setTotalPosts] = useState(0);
+
   const filterByDev = (filteredData) => {
     if (selectedDev === "Забудовники" || selectedDev === "Всі") {
       return filteredData;
@@ -21,7 +23,7 @@ function HouseList({ posts, title }) {
     );
     return filteredDev;
   };
-
+  // let filteredData = posts;
   const filterByState = (filteredData) => {
     if (!selectedState) {
       return filteredData;
@@ -35,6 +37,7 @@ function HouseList({ posts, title }) {
 
   const handleDevChange = (text) => {
     setSelectedDev(text);
+
     console.log(text);
   };
 
@@ -55,7 +58,7 @@ function HouseList({ posts, title }) {
     filteredData = filterByState(filteredData);
     setFilteredList(filteredData);
   }, [selectedDev, selectedState]);
-
+  // setTotalPosts(filteredData.length);
   return (
     <div className="house" id="realEstate">
       <h1 className="house--text">{title}</h1>
@@ -66,7 +69,6 @@ function HouseList({ posts, title }) {
           selected={selectedDev}
         />
 
-        {/* <h5 className="house--text">Cтан будівництва:</h5> */}
         <div id="year-options" onClick={handleYearChange}>
           <div
             className={
@@ -94,6 +96,7 @@ function HouseList({ posts, title }) {
           </div>
         </div>
       </span>
+
       <div className="house__container">
         <div className="house__wrapper">
           <ul className="house__items">
