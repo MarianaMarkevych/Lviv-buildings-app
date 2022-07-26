@@ -6,7 +6,8 @@
 .dropdown {
   width: 340px;
   user-select: none;
-  margin-left: 2rem;
+  margin-left: 4rem;
+
   position: relative;
   padding-top: 0px;
   z-index: 1;

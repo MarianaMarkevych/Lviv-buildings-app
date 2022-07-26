@@ -46,10 +46,11 @@
 h1 {
   font-family: "Raleway", sans-serif;
   text-align: left;
-  margin: 2rem 0rem 3rem 9.1rem;
+  margin: 2rem 0rem 3rem 11rem;
 }
 .house--select {
   margin-left: 7rem;
+  margin-top: 2rem;
   text-align: left;
   display: flex;
   align-items: center;
