@@ -19,7 +19,7 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPosts, setTotalPosts] = useState(0);
   const postsPerPage = 6;
-  const text = ["Parus", "Avalon", "Lev", "Всі"];
+  const text = ["Parus", "Avalon", "Lev development", "Всі"];
   const [filteredList, setFilteredList] = useState(posts);
   const [selectedDev, setSelectedDev] = useState("Забудовники");
   const [selectedState, setSelectedState] = useState("");
@@ -31,6 +31,10 @@ function Home() {
       console.log(res.data);
       setPosts(res.data);
       setLoading(false);
+      posts.slice(
+        (currentPage - 1) * postsPerPage,
+        (currentPage - 1) * postsPerPage + postsPerPage
+      );
     };
     fetchPosts();
   }, [postsPerPage, currentPage]);
@@ -83,15 +87,14 @@ function Home() {
 
     setTotalPosts(filteredData.length);
 
-    filteredData.slice(
-      (currentPage - 1) * postsPerPage,
-      (currentPage - 1) * postsPerPage + postsPerPage
-    );
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
+    setFilteredList(currentPosts);
   }, [selectedDev, selectedState, currentPage, posts, postsPerPage]);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    console.log(pageNumber);
   };
   return (
     <>
