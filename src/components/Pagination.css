@@ -7,6 +7,7 @@
   text-decoration: none;
   justify-content: center;
   align-items: center;
+  list-style: none;
 }
 
 /* .page__wrapper {
@@ -69,7 +70,7 @@ ul.pagination li a {
 ul.pagination li a:hover:not(.active) {
   background-image: linear-gradient(35deg, #ffffff, #bdd0f5);
 } */
-*/
+
 /* a.page-link {
   padding: 0.75rem 1rem;
   min-width: 3.5rem;
@@ -85,6 +86,8 @@ ul.pagination li a:hover:not(.active) {
 }
 
 .pageNumbers li {
+  /* font-size: 14px; */
+  font-weight: 1000;
   padding: 6px 12px;
   margin: 0 4px;
   cursor: pointer;
@@ -99,27 +102,20 @@ ul.pagination li a:hover:not(.active) {
   color: rgb(255, 255, 255);
 }
 
-.pageNumbers li button {
+button {
+  padding: 7.5px 12.5px;
+  margin: 0 4px;
   background-color: transparent;
   border: none;
-  color: white;
-  font-size: 2rem;
+  color: rgb(121, 121, 121);
   cursor: pointer;
-}
-.pageNumbers li button:hover {
+  border-radius: 7px;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
   background-color: white;
-  color: black;
-}
-.pageNumbers li button:focus {
-  outline: none;
+  font-family: "Raleway", sans-serif;
 }
 
-/* .loadmore {
-  padding: 1rem;
-  background-color: transparent;
-
-  color: white;
-  font-size: 1.2rem;
-  border: 1px solid white;
-  cursor: pointer;
-} */
+button:hover {
+  background-image: linear-gradient(35deg, #bdd0f5, #bdd0f5);
+  color: rgb(255, 255, 255);
+}

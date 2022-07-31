@@ -18,7 +18,6 @@
 }
 .brand-filter {
   display: flex;
-  margin: 15px;
 }
 #brand-input {
   width: 80px;
@@ -35,8 +34,8 @@
   transition: all 0.1s;
 }
 .filter-option:hover {
-  background-image: linear-gradient(35deg, #ffffff, #bdd0f5);
-  /* color: white; */
+  background-image: linear-gradient(35deg, #bdd0f5, #bdd0f5);
+  color: white;
   cursor: pointer;
   display: flex;
   justify-content: center;
